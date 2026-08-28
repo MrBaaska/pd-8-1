@@ -963,6 +963,18 @@
 
       <div class="sidebar-divider"></div>
 
+<div class="sidebar-item">
+        <a href="#" class="sidebar-link danger-link" id="toggle-alert" data-page-key="Ажлын бүртгэл">
+          <i class="fa fa-sitemap"></i> Ажлын бүртгэл
+        </a>
+      </div>
+
+      <div class="sidebar-item">
+        <a href="#" class="sidebar-link danger-link" id="toggle-alert" data-page-key="Хурлын тэмдэглэл">
+          <i class="fa fa-sitemap"></i> Хурлын тэмдэглэл
+        </a>
+      </div>
+
       <div class="sidebar-item">
         <a href="#" class="sidebar-link danger-link" id="toggle-alert" data-page-key="Менежментийн нэгдсэн тогтолцоо">
           <i class="fa fa-sitemap"></i> Менежментийн нэгдсэн тогтолцоо
@@ -1248,7 +1260,9 @@
     'Паспортын үзлэг': 'passport.html',
     'Замын техникийн байдал': 'tech.html',
     'Хэсгийн танилцуулга': 'heseg.html',
-    'Бүртгэл': 'bvrtgel.html'
+    'Бүртгэл': 'bvrtgel.html',
+    'Ажлын бүртгэл': 'ajliinBvrtgel.html',
+    'Хурлын тэмдэглэл': 'hural.html'
   };
 
   function findPageElement(pageKey) {
@@ -1646,10 +1660,13 @@
     const frameTitle = document.getElementById('frame-title-label');
     const main = document.querySelector('.main');
     const titleText = clickedElement.textContent.trim().replace(/\s+/g, ' ');
-    const isTushaalPage = pageKey === 'Тушаал, стандарт' || pageKey === 'уулзварын зайн судалгаа';
+    const isFullFramePage = pageKey === 'Тушаал, стандарт'
+      || pageKey === 'уулзварын зайн судалгаа'
+      || pageKey === 'Ажлын бүртгэл'
+      || pageKey === 'Хурлын тэмдэглэл';
 
     if (main) {
-      main.classList.toggle('tushaal-expanded', isTushaalPage);
+      main.classList.toggle('tushaal-expanded', isFullFramePage);
     }
 
     frame.src = resolvePageSrc(pageKey, titleText);
